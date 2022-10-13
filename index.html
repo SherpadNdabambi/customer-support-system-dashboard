@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<!--page title-->
+	<title>Customer Support System</title>
+
+	<!--page description-->
+	<meta name="description" content="A project using SQL, PHP, HTML, and JavaScript to generate reports from mock customer support data.">
+
+	<!--character encoding-->
+	<meta charset="utf-8">
+
+	<!--device width-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--Open Graph tags-->
+	<meta property="og:title" content="Customer Support System">
+	<meta property="og:description" content="A project using SQL, PHP, HTML, and JavaScript to generate reports from mock customer support data.">
+	<meta property="og:image" content="img/og-image.jpg">
+
+	<!--Twitter cards-->
+	<meta name="twitter:title" content="Customer Support System">
+
+	<!--stylesheets-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<!--scripts-->
+	<script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+	<script type="text/javascript" src="js/includeLocal.js"></script>
+	<script defer type="text/javascript">window.jQuery || includeLocalJS("jquery-3.6.0.min.js");</script>
+	<script defer type="text/javascript">($("i").css("fontFamily") === "FontAwesome") || includeLocalCSS("font-awesome.min.css");</script>
+	<script type="text/javascript">window.Highcharts || includeLocalJS("highcharts.js");</script>
+	<script type="text/javascript">(window.Highcharts && window.Highcharts._modules['Extensions/Exporting/Exporting.js']) || includeLocalJS("exporting.js");</script>
+	<script type="text/javascript">(window.Highcharts && window.Highcharts._modules['Extensions/OfflineExporting/OfflineExporting.js']) || includeLocalJS("offline-exporting.js");</script>
+	<script type="text/javascript">includeLocalJS("jspdf.js");</script>
+	<script type="text/javascript">includeLocalJS("svg2pdf.js");</script>
+	<script type="text/javascript">(window.Highcharts && window.Highcharts._modules['Accessibility/Accessibility.js']) || includeLocalJS("accessibility.js");</script>
+	<script defer type="text/javascript" src="js/scripts.js"></script>
+
+</head>
+
+<body>
+
+	<main class="container">
+
+		<h1 id="title">Customer Support System Dashboard</h1>
+
+		<div id="dashboard">
+
+			<div id="agentsPerTicketBoard"></div>
+
+			<div id="agentRatingsBoard"></div>
+
+			<div id="ticketsPerAgentBoard"></div>
+
+			<div id="resolutionTimePerMonthBoard"></div>
+
+			<div id="resolutionTimeBoard">
+
+				<div>
+
+					<p>Minimum Resolution Time</p>
+					
+					<p>(in hours)</p>
+
+					<p id="minResolutionTime"><i class="fa fa-spinner fa-pulse"></i></p>
+
+				</div>
+
+				<div>
+
+					<p>Average Resolution Time</p>
+					
+					<p>(in hours)</p>
+
+					<p id="avgResolutionTime"><i class="fa fa-spinner fa-pulse"></i></p>
+
+				</div>
+
+				<div>
+
+					<p>Maximum Resolution Time</p>
+					
+					<p>(in hours)</p>
+
+					<p id="maxResolutionTime"><i class="fa fa-spinner fa-pulse"></i></p>
+
+				</div>
+
+			</div>
+
+		</div>
+		
+	</main>
+	
+	<!--Footer-->
+	<footer class="container">
+
+		<div id="copyright" class="center middle">
+
+			&copy Sherpad Ndabambi <span id="footerYear"></span>
+
+		</div>
+		
+	</footer>
+
+</body>
+
+</html>

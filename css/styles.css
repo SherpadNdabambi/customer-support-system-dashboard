@@ -1,0 +1,153 @@
+* {
+	box-sizing: border-box;
+}
+
+#agentsPerTicketBoard {
+	border: 1px rgba(0, 0, 0, 0.1) solid;
+	min-height: 300px;
+}
+
+body {
+	background-color: rgb(26,39,83);
+	color: rgb(196,210,255);
+    font-family: sans-serif;
+	font-size: 1.6rem;
+}
+
+.bottom {
+	position: absolute;
+	bottom: 0;
+}
+
+.center {
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%);
+}
+
+.center.middle {
+	transform: translate(-50%, -50%);
+}
+
+.container {
+	position: relative;
+}
+
+#copyright {
+	text-align: center;
+}
+
+#customersPerAgentBoard {
+	min-height: 300px;
+}
+
+#dashboard {
+	background-color: rgb(56,69,113);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+#dashboard > div {
+	border: 1px rgba(0, 0, 0, 0.1) solid;
+	margin: 5px;
+}
+
+div {
+	border-radius: 10px;
+}
+
+footer {
+	height: 100px;
+}
+
+h1 {
+	font-size: 4rem;
+	text-align: center;
+}
+
+h2 {
+	font-size: 3.25rem;
+}
+
+.hidden {
+	display: none;
+}
+
+.highcharts-background {
+	fill: rgb(196,210,255);
+}
+
+html {
+	/* Setting a base font size of 10px give us easier rem calculations
+	   Info: 1rem === 10px, 1.5rem === 15px, 2rem === 20px and so forth */
+	font-size: 10px;
+}
+
+main {
+	height: auto;
+	min-height: calc(100vh - 100px);
+}
+
+.middle {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#resolutionTimeBoard {
+	background-color: rgb(87,101,146);
+	border-radius: 5px;
+	display: flex;
+	height: 150px;
+	padding: 2px;
+}
+
+#resolutionTimeBoard > div {
+	background-color: rgb(196,210,255);
+	border-radius: 5px;
+	color: rgb(0,14,59);
+	margin: 2px;
+	padding: 0 10px;
+}
+
+#resolutionTimeBoard p {
+	text-align: center;
+}
+
+#resolutionTimeBoard p:nth-of-type(1) {
+	margin-bottom: 0;
+}
+
+#resolutionTimeBoard p:nth-of-type(2) {
+	font-size: 1.5rem;
+	margin-top: 0;
+}
+
+#resolutionTimeBoard p:last-of-type {
+	font-size: 2rem;
+}
+
+.right {
+	position: absolute;
+	right: 0;
+}
+
+.top {
+	position: absolute;
+	top: 0;
+}
+
+@media (min-width: 461px) {
+	
+	#resolutionTimeBoard {
+		height: 130px;
+	}
+}
+
+@media (min-width: 653px) {
+	
+	#resolutionTimeBoard {
+		height: 115px;
+	}
+}
