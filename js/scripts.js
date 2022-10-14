@@ -436,7 +436,7 @@ function getResolutionTimePerMonth() {
             avg_resolution_times: avg_resolution_times,
             max_resolution_times: max_resolution_times,
             min_resolution_times: min_resolution_times,
-            months: month_names
+            month_names: month_names
         });
     });
 }
