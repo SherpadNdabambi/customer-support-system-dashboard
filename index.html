@@ -22,6 +22,9 @@
 	<!--Twitter cards-->
 	<meta name="twitter:title" content="Customer Support System">
 
+	<!--icon-->
+	<link rel="icon" href="./img/customer-service-svgrepo-com.svg">
+
 	<!--stylesheets-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -46,69 +49,243 @@
 </head>
 
 <body>
+	
+	<div id="wrapper">
 
-	<main class="container">
+		<main class="container">
 
-		<h1 id="title">Customer Support System Dashboard</h1>
+			<nav id="navbar">
 
-		<div id="dashboard">
+				<figure>
 
-			<div id="agentsPerTicketBoard"></div>
+					<img alt="Customer Support System logo" src="./img/customer-service-svgrepo-com.svg">
 
-			<div id="agentRatingsBoard"></div>
+					<figcaption>
+						<h1 id="title">Customer Support System</h1>
+					</figcaption>
 
-			<div id="ticketsPerAgentBoard"></div>
+				</figure>
 
-			<div id="resolutionTimePerMonthBoard"></div>
+				<button id="navicon" onclick="naviconClicked();"><i class="fa fa-2x fa-bars"></i></button>
 
-			<div id="resolutionTimeBoard">
+				<div></div>
+
+				<div></div>
+
+				<div></div>
+
+				<div></div>
+
+				<button class="notification-button">
+
+					<img alt="Notification icon" src="./img/notification-svgrepo-com.svg">
+
+					<span>3</span>
+
+				</button>
+
+				<span>
+
+					<span>Hello, Admin</span>
+
+					<button><img alt="User avatar" id="avatar" src="./img/avatar-svgrepo-com.svg"></button>
+
+				</span>
+
+			</nav>
+
+			<nav id="sidebar">
+
+				<ul>
+
+					<li>
+
+						<div>
+							<figure>
+								<img alt="Dashboard icon" src="./img/dashboard-svgrepo-com.svg">
+								<figcaption>Dashboard</figcaption>
+							</figure>
+						</div>
+
+					</li>
+
+					<li>
+
+							<figure>
+								<img alt="Ticket icon" src="./img/ticket-svgrepo-com light.svg">
+								<figcaption>Tickets</figcaption>
+							</figure>
+							<span>+</span>
+
+					</li>
+
+					<li>
+
+						<div>
+							<figure>
+								<img alt="Agent icon" src="./img/customer-service-svgrepo-com (1) light.svg">
+								<figcaption>Agents</figcaption>
+							</figure>
+						</div>
+
+					</li>
+
+					<li>
+
+						<div>
+							<figure>
+								<img alt="Customer icon" src="./img/customer-rate-svgrepo-com light.svg">
+								<figcaption>Customers</figcaption>
+							</figure>
+						</div>
+
+					</li>
+
+					<li>
+
+						<div>
+							<figure>
+								<img alt="Notification icon" src="./img/notification-svgrepo-com.svg">
+								<figcaption>Notifications</figcaption>
+							</figure>
+						</div>
+
+					</li>
+
+				</ul>
+
+			</nav>
+
+			<div id="dashboard-container">
+
+				<h2>Dashboard</h2>
+
+				<div id="dashboard">
 
 				<div>
 
-					<p>Minimum Resolution Time</p>
-					
-					<p>(in hours)</p>
+					<div id="openTicketsBoard">
 
-					<p id="minResolutionTime"><i class="fa fa-spinner fa-pulse"></i></p>
+						<div>
+							<div>
+
+								<p>Number of Open Tickets</p>
+
+								<p id="numOfOpenTickets"><i class="fa fa-spinner fa-pulse"></i></p>
+
+							</div>
+
+							<div>
+
+								<img src="./img/ticket-svgrepo-com.svg" alt="Ticket icon">
+
+							</div>
+						</div>
+
+					</div>
+
+					<div id="numOfCustomersBoard">
+
+						<div>
+							<div>
+
+								<p>Total Number of Customers</p>
+
+								<p id="numOfCustomers"><i class="fa fa-spinner fa-pulse"></i></p>
+
+							</div>
+
+							<div>
+
+								<img src="./img/customer-rate-svgrepo-com.svg" alt="Customer icon">
+
+							</div>
+						</div>
+
+					</div>
+
+					<div id="numOfAgentsBoard">
+
+						<div>
+							<div>
+
+								<p>Total Number of Agents</p>
+
+								<p id="numOfAgents"><i class="fa fa-spinner fa-pulse"></i></p>
+
+							</div>
+
+							<div>
+
+								<img src="./img/customer-service-svgrepo-com (1).svg" alt="Agent icon">
+
+							</div>
+						</div>
+
+					</div>
 
 				</div>
 
-				<div>
+					<div class="chart" id="agentsPerTicketBoard"></div>
 
-					<p>Average Resolution Time</p>
-					
-					<p>(in hours)</p>
+					<div class="chart" id="agentRatingsBoard"></div>
 
-					<p id="avgResolutionTime"><i class="fa fa-spinner fa-pulse"></i></p>
+					<div class="chart" id="ticketsPerAgentBoard"></div>
 
-				</div>
+					<div class="chart" id="resolutionTimePerMonthBoard"></div>
 
-				<div>
+					<div id="resolutionTimeBoard">
 
-					<p>Maximum Resolution Time</p>
-					
-					<p>(in hours)</p>
+						<div>
 
-					<p id="maxResolutionTime"><i class="fa fa-spinner fa-pulse"></i></p>
+							<p>Minimum Resolution Time</p>
+							
+							<p>(in hours)</p>
+
+							<p id="minResolutionTime"><i class="fa fa-spinner fa-pulse"></i></p>
+
+						</div>
+
+						<div>
+
+							<p>Average Resolution Time</p>
+							
+							<p>(in hours)</p>
+
+							<p id="avgResolutionTime"><i class="fa fa-spinner fa-pulse"></i></p>
+
+						</div>
+
+						<div>
+
+							<p>Maximum Resolution Time</p>
+							
+							<p>(in hours)</p>
+
+							<p id="maxResolutionTime"><i class="fa fa-spinner fa-pulse"></i></p>
+
+						</div>
+
+					</div>
 
 				</div>
 
 			</div>
-
-		</div>
+			
+		</main>
 		
-	</main>
-	
-	<!--Footer-->
-	<footer class="container">
+		<!--Footer-->
+		<footer class="container">
 
-		<div id="copyright" class="center middle">
+			<div id="copyright" class="center middle">
 
-			&copy Sherpad Ndabambi <span id="footerYear"></span>
+				&copy Sherpad Ndabambi <span id="footerYear"></span>
 
-		</div>
-		
-	</footer>
+			</div>
+			
+		</footer>
+
+	</div>
 
 </body>
 
