@@ -280,7 +280,7 @@ The results may be presented in the form of a pie chart like this:
 
 ### 3. Total Number of Tickets Per Agent ###
 
-We may write the following SQL query to show us how many tickets each agent has dealt with:
+We may write the following SQL query to show us how many resolved tickets each agent was involved in:
 
 ```sql
 SELECT
@@ -288,9 +288,12 @@ SELECT
     COUNT(DISTINCT MESSAGE.ticket_id) AS number_of_tickets
 FROM
     AGENT,
-    MESSAGE
+    MESSAGE,
+    TICKET
 WHERE
-    AGENT.sender_id = MESSAGE.sender_id
+    AGENT.sender_id = MESSAGE.sender_id AND
+    MESSAGE.ticket_id = TICKET.ticket_id AND
+    ticket_status = "resolved"
 GROUP BY MESSAGE.sender_id;
 ```
 

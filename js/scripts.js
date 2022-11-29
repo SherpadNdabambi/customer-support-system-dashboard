@@ -1,19 +1,33 @@
+// declare local variables;
+let sidebarLeftMargin;
+
 $(document).ready(async function() {
     setFooterYear();
+    const agentCount = await getAgentCount();
     const agentRatings = await getAgentRatings();
     const agentsPerTicket = await getAgentsPerTicket();
+    const customerCount = await getCustomerCount();
+    const openTicketCount = await getOpenTicketCount();
     const resolutionTimes = await getResolutionTime();
     const resolutionTimesPerMonth = await getResolutionTimePerMonth();
     const ticketsPerAgent = await getTicketsPerAgent();
-    displayCharts(agentRatings, agentsPerTicket, resolutionTimes, resolutionTimesPerMonth, ticketsPerAgent);
+    displayCharts(agentCount, agentRatings, agentsPerTicket, customerCount, openTicketCount, resolutionTimes, resolutionTimesPerMonth, ticketsPerAgent);
 });
 
-function displayCharts(agentRatings, agentsPerTicket, resolutionTimes, resolutionTimesPerMonth, ticketsPerAgent) {
+function displayCharts(agentCount, agentRatings, agentsPerTicket, customerCount, openTicketCount, resolutionTimes, resolutionTimesPerMonth, ticketsPerAgent) {
+    displayAgentCount(agentCount);
     displayAgentRatingsBoard(agentRatings);
     displayAgentsPerTicketChart(agentsPerTicket);
+    displayCustomerCount(customerCount);
+    displayOpenTicketCount(openTicketCount);
     displayResolutionTimeChart(resolutionTimes);
     displayResolutionTimePerMonthChart(resolutionTimesPerMonth);
     displayTicketsPerAgentChart(ticketsPerAgent);
+}
+
+function displayAgentCount(agentCount){
+    $("#numOfAgents").empty();
+    $("#numOfAgents").append(agentCount.number_of_agents);
 }
 
 function displayAgentRatingsBoard(agentRatings) {
@@ -57,6 +71,7 @@ function displayAgentRatingsBoard(agentRatings) {
             title: "Rating"
         }
     });
+    agentRatingsChart.reflow();
 }
 
 function displayAgentsPerTicketChart(agentsPerTicket) {
@@ -102,6 +117,17 @@ function displayAgentsPerTicketChart(agentsPerTicket) {
             text: "Number of Agents Involved in a Ticket"
         }
     });
+    agentsPerTicketChart.reflow();
+}
+
+function displayCustomerCount(customerCount){
+    $("#numOfCustomers").empty();
+    $("#numOfCustomers").append(customerCount.number_of_customers);
+}
+
+function displayOpenTicketCount(openTicketCount){
+    $("#numOfOpenTickets").empty();
+    $("#numOfOpenTickets").append(openTicketCount.number_of_tickets);
 }
 
 function displayResolutionTimeChart(resolutionTimes) {
@@ -150,6 +176,7 @@ function displayResolutionTimePerMonthChart(resolutionTimesPerMonth) {
             },
         }
     });
+    resolutionTimePerMonthChart.reflow();
 }
 
 function displayTicketsPerAgentChart(ticketsPerAgent) {
@@ -187,6 +214,27 @@ function displayTicketsPerAgentChart(ticketsPerAgent) {
             }
         }
     });
+    ticketsPerAgentChart.reflow();
+}
+
+function getAgentCount(){
+    return new Promise(async (resolve) => {
+
+        // declare local variables
+        let numOfAgents;
+        await $.get("php/getAgentCount.php", (result) => {
+            try {
+                numOfAgents = JSON.parse(result);
+            }
+            catch(error) {
+                console.log(error);
+                numOfAgents = {
+                    number_of_agents: 34
+                };
+            }
+        });
+        resolve(numOfAgents);
+    });
 }
 
 function getAgentRatings() {
@@ -198,76 +246,76 @@ function getAgentRatings() {
             avg_ratings = [],
             max_ratings = [],
             min_ratings = [];
-            await $.get("php/getAgentRatings.php", (result) => {
-                try {
-                    agentRatings = JSON.parse(result);
-                }
-                catch(error) {
-                    console.log(error);
-                    agentRatings = [
-                        {
-                            agent: "Nick Fury",
-                            min_rating: 3,
-                            avg_rating: 4.341463414634147,
-                            max_rating: 5
-                        },
-                        {
-                            agent: "Natasha Romanoff",
-                            min_rating: 3,
-                            avg_rating: 4.351851851851852,
-                            max_rating: 5
-                        },
-                        {
-                            agent: "Melinda May",
-                            min_rating: 3,
-                            avg_rating: 4.402985074626866,
-                            max_rating: 5
-                        },
-                        {
-                            agent: "Leo Fitz",
-                            min_rating: 1,
-                            avg_rating: 4.133333333333334,
-                            max_rating: 5
-                        },
-                        {
-                            agent: "Jemma Simmons",
-                            min_rating: 2,
-                            avg_rating: 3.842857142857143,
-                            max_rating: 5
-                        },
-                        {
-                            agent: "Daisy Johnson",
-                            min_rating: 3,
-                            avg_rating: 4.148351648351649,
-                            max_rating: 5
-                        },
-                        {
-                            agent: 'Antoinne "Trip" Triplett',
-                            min_rating: 3,
-                            avg_rating: 4,
-                            max_rating: 5
-                        },
-                        {
-                            agent: "Lance Hunter",
-                            min_rating: 3,
-                            avg_rating: 4.264285714285714,
-                            max_rating: 5
-                        },
-                        {
-                            agent: "Lincoln Campbell",
-                            min_rating: 3,
-                            avg_rating: 4.244186046511628,
-                            max_rating: 5
-                        },
-                        {
-                            agent: 'Elena "Yo-Yo" Rodriguez',
-                            min_rating: 3,
-                            avg_rating: 4.383561643835616,
-                            max_rating: 5
-                        }
-                    ];
-                }
-            });
+        await $.get("php/getAgentRatings.php", (result) => {
+            try {
+                agentRatings = JSON.parse(result);
+            }
+            catch(error) {
+                console.log(error);
+                agentRatings = [
+                    {
+                        agent: "Nick Fury",
+                        min_rating: 3,
+                        avg_rating: 4.341463414634147,
+                        max_rating: 5
+                    },
+                    {
+                        agent: "Natasha Romanoff",
+                        min_rating: 3,
+                        avg_rating: 4.351851851851852,
+                        max_rating: 5
+                    },
+                    {
+                        agent: "Melinda May",
+                        min_rating: 3,
+                        avg_rating: 4.402985074626866,
+                        max_rating: 5
+                    },
+                    {
+                        agent: "Leo Fitz",
+                        min_rating: 1,
+                        avg_rating: 4.133333333333334,
+                        max_rating: 5
+                    },
+                    {
+                        agent: "Jemma Simmons",
+                        min_rating: 2,
+                        avg_rating: 3.842857142857143,
+                        max_rating: 5
+                    },
+                    {
+                        agent: "Daisy Johnson",
+                        min_rating: 3,
+                        avg_rating: 4.148351648351649,
+                        max_rating: 5
+                    },
+                    {
+                        agent: 'Antoinne "Trip" Triplett',
+                        min_rating: 3,
+                        avg_rating: 4,
+                        max_rating: 5
+                    },
+                    {
+                        agent: "Lance Hunter",
+                        min_rating: 3,
+                        avg_rating: 4.264285714285714,
+                        max_rating: 5
+                    },
+                    {
+                        agent: "Lincoln Campbell",
+                        min_rating: 3,
+                        avg_rating: 4.244186046511628,
+                        max_rating: 5
+                    },
+                    {
+                        agent: 'Elena "Yo-Yo" Rodriguez',
+                        min_rating: 3,
+                        avg_rating: 4.383561643835616,
+                        max_rating: 5
+                    }
+                ];
+            }
+        });
 
         agentRatings.forEach((row) => {
             agents.push(row.agent);
@@ -301,7 +349,7 @@ function getAgentsPerTicket() {
                     agentsPerTicket = [
                         {
                             number_of_agents: 1,
-                            number_of_tickets: 107
+                            number_of_tickets: 106
                         },
                         {
                             number_of_agents: 2,
@@ -309,7 +357,7 @@ function getAgentsPerTicket() {
                         }, 
                         {
                             number_of_agents: 3,
-                            number_of_tickets: 196
+                            number_of_tickets: 194
                         }
                     ];
                 }
@@ -326,6 +374,46 @@ function getAgentsPerTicket() {
     });
 }
 
+function getCustomerCount(){
+    return new Promise(async (resolve) => {
+
+        // declare local variables
+        let numOfCustomers;
+        await $.get("php/getCustomerCount.php", (result) => {
+            try {
+                numOfCustomers = JSON.parse(result);
+            }
+            catch(error) {
+                console.log(error);
+                numOfCustomers = {
+                    number_of_customers: 123
+                };
+            }
+        });
+        resolve(numOfCustomers);
+    });
+}
+
+function getOpenTicketCount(){
+    return new Promise(async (resolve) => {
+
+        // declare local variables
+        let numOfTickets;
+        await $.get("php/getOpenTicketCount.php", (result) => {
+            try {
+                numOfTickets = JSON.parse(result);
+            }
+            catch(error) {
+                console.log(error);
+                numOfTickets = {
+                    number_of_tickets: 3
+                };
+            }
+        });
+        resolve(numOfTickets);
+    });
+}
+
 function getResolutionTime() {
     return new Promise(async (resolve) => {
         await $.get("php/getResolutionTime.php", (result) => {
@@ -335,7 +423,7 @@ function getResolutionTime() {
             catch(error) {
                 console.log(error);
                 resolve({
-                    avg_resolution_time: 238.06969045,
+                    avg_resolution_time: 237.85225107,
                     max_resolution_time: 620.8939,
                     min_resolution_time: 1.9275
                 });
@@ -362,13 +450,13 @@ function getResolutionTimePerMonth() {
                 console.log(error);
                 resolutionTimesPerMonth = [
                     {
-                        avg_resolution_time: 187.05890000,
+                        avg_resolution_time: 189.49780556,
                         max_resolution_time: 490.1572,
                         min_resolution_time: 32.5833,
                         month_name: "Jan"
                     },
                     {
-                        avg_resolution_time: 243.75820000,
+                        avg_resolution_time: 241.65295385,
                         max_resolution_time: 575.6756,
                         min_resolution_time: 2.8372,
                         month_name: "Feb"
@@ -410,7 +498,7 @@ function getResolutionTimePerMonth() {
                         month_name: "Aug"
                     },
                     {
-                        avg_resolution_time: 234.12002800,
+                        avg_resolution_time: 231.33859388,
                         max_resolution_time: 538.6525,
                         min_resolution_time: 20.4778,
                         month_name: "Sep"
@@ -466,15 +554,15 @@ function getTicketsPerAgent() {
                     },
                     {
                         agent: 'Daniel Sousa',
-                        number_of_tickets: 26
+                        number_of_tickets: 25
                     },
                     {
                         agent: 'Hank Pym',
-                        number_of_tickets: 20
+                        number_of_tickets: 19
                     },
                     {
                         agent: 'Janet Van Dyne',
-                        number_of_tickets: 20
+                        number_of_tickets: 19
                     },
                     {
                         agent: 'Nick Fury',
@@ -494,11 +582,11 @@ function getTicketsPerAgent() {
                     },
                     {
                         agent: 'Melinda May',
-                        number_of_tickets: 26
+                        number_of_tickets: 25
                     },
                     {
                         agent: 'Leo Fitz',
-                        number_of_tickets: 11
+                        number_of_tickets: 10
                     },
                     {
                         agent: 'Jemma Simmons',
@@ -530,7 +618,7 @@ function getTicketsPerAgent() {
                     },
                     {
                         agent: 'Mike Peterson',
-                        number_of_tickets: 23
+                        number_of_tickets: 22
                     },
                     {
                         agent: 'Antoinne "Trip" Triplett',
@@ -550,7 +638,7 @@ function getTicketsPerAgent() {
                     },
                     {
                         agent: 'Lincoln Campbell',
-                        number_of_tickets: 27
+                        number_of_tickets: 26
                     },
                     {
                         agent: 'Holden Radcliffe',
@@ -608,6 +696,29 @@ function getTicketsPerAgent() {
     });
 }
 
+function hide(){
+    for (let i = 0; i < arguments.length; i++)
+        arguments[i].setAttribute('class', (arguments[i].getAttribute('class') === '') ?
+            'hidden' : arguments[i].getAttribute('class') + ' hidden');
+}
+
+function isVisible(element) {
+    if (element.classList) return !element.classList.contains('hidden');
+    return element.style.display !== "none";
+}
+
+function naviconClicked() {
+    if(isVisible(sidebar)){
+        hide(sidebar);
+        sidebarLeftMargin = $("#dashboard-container").css("marginLeft");
+        $("#dashboard-container").css("marginLeft", 0);
+    }
+    else{
+        show(sidebar);
+        $("#dashboard-container").css("marginLeft", sidebarLeftMargin);
+    }
+}
+
 function round(number) {
     return ((number < 10) ? Math.round(number * 100) / 100 : Math.round(number * 10) / 10);
 }
@@ -615,4 +726,10 @@ function round(number) {
 function setFooterYear() {
     let date = new Date(), year = date.getFullYear();
     $("#footerYear").text(year.toString());
+}
+
+function show(){
+    for (let i = 0; i < arguments.length; i++)
+        arguments[i].setAttribute('class', arguments[i].getAttribute('class').replace(' hidden', '')) ||
+        arguments[i].setAttribute('class', arguments[i].getAttribute('class').replace('hidden', ''));
 }
