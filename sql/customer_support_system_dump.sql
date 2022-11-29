@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 08, 2022 at 07:46 PM
+-- Generation Time: Nov 29, 2022 at 02:20 AM
 -- Server version: 5.6.13
 -- PHP Version: 5.4.17
 
@@ -7049,7 +7049,7 @@ INSERT INTO `ticket` (`ticket_id`, `customer_id`, `ticket_category`, `ticket_rat
 (1738, 71, 'Order cancellation', '5', 'resolved'),
 (1739, 71, 'Overcharged transaction', '5', 'resolved'),
 (1740, 71, 'Bug report', '5', 'resolved'),
-(1741, 71, 'Account access', '4', 'resolved'),
+(1741, 71, 'Account access', '4', 'open'),
 (1742, 71, 'Undelivered goods', '5', 'resolved'),
 (1743, 72, 'Undelivered goods', '5', 'resolved'),
 (1744, 72, 'Undelivered goods', '5', 'resolved'),
@@ -7114,7 +7114,7 @@ INSERT INTO `ticket` (`ticket_id`, `customer_id`, `ticket_category`, `ticket_rat
 (1803, 92, 'Undelivered goods', '5', 'resolved'),
 (1804, 93, 'Bug report', '4', 'resolved'),
 (1805, 93, 'Account access', '3', 'resolved'),
-(1806, 93, 'Wrong order', '5', 'resolved'),
+(1806, 93, 'Wrong order', '5', 'open'),
 (1807, 93, 'Wrong order', '4', 'resolved'),
 (1808, 93, 'Bug report', '4', 'resolved'),
 (1809, 94, 'Order cancellation', '3', 'resolved'),
@@ -7140,7 +7140,7 @@ INSERT INTO `ticket` (`ticket_id`, `customer_id`, `ticket_category`, `ticket_rat
 (1829, 101, 'Account access', '5', 'resolved'),
 (1830, 102, 'Undelivered goods', '5', 'resolved'),
 (1831, 102, 'Overcharged transaction', '4', 'resolved'),
-(1832, 102, 'Bug report', '4', 'resolved'),
+(1832, 102, 'Bug report', '4', 'open'),
 (1833, 102, 'Undelivered goods', '5', 'resolved'),
 (1834, 103, 'Bug report', '4', 'resolved'),
 (1835, 103, 'Account access', '4', 'resolved'),
