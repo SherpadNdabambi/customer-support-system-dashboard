@@ -152,6 +152,7 @@ main {
 #navbar {
 	align-items: center;
 	background-color: rgb(26,39,83);
+	box-shadow: 0 3px 6px 0 rgba(0,0,0,.1),0 1px 3px 0 rgba(0,0,0,.08);
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -255,6 +256,7 @@ main {
 
 #sidebar {
 	background-color: rgb(0,14,59);
+	box-shadow: 0 3px 6px 0 rgba(0,0,0,.1),0 1px 3px 0 rgba(0,0,0,.08);
 	height: 100vh;
 	position: fixed;
 	width: 250px;
