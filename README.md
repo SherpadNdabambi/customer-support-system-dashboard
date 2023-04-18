@@ -355,4 +355,4 @@ We may display the results like this:
 
 ![Agent Ratings Chart](img/Agent%20Ratings%20Chart.jpeg)
 
-This project is based on the guide "[Tracking Customer Service Metrics with SQL](https://mode.com/blog/tracking-customer-service-metrics/)."
+<small>This project is based on the guide "[Tracking Customer Service Metrics with SQL](https://mode.com/blog/tracking-customer-service-metrics/)."</small>
